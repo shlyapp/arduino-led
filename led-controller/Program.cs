@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace led_controller
+namespace arduino_with_pc
 {
     static class Program
     {
