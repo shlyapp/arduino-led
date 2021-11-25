@@ -1,0 +1,7 @@
+/led-controller/bin
+/led-controller/obj
+/led-controller/Properties
+/led-controller/App.config
+/led-controller/led-controller.csproj
+/led-controller/led-controller.sln
+.vs/
