@@ -34,6 +34,7 @@ namespace arduino_with_pc
                 redLed.Enabled = true;
                 greenLed.Enabled = true;
                 blueLed.Enabled = true;
+                speedLed.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -79,12 +80,14 @@ namespace arduino_with_pc
             redLed.Enabled = false;
             greenLed.Enabled = false;
             blueLed.Enabled = false;
+            speedLed.Enabled = false;
         }
 
         private void speedLed_Scroll(object sender, ScrollEventArgs e)
         {
             serialPort.Write("e" + Led.ConvertValueToPWM(speedLed.Value).ToString());
         }
+
     }
 
     public class Led
