@@ -2,9 +2,9 @@
 #define G 9
 #define B 11
 
-byte r_;
-byte g_;
-byte b_;
+int r_;
+int g_;
+int b_;
 
 unsigned long int current_millis;
 int value_led;
