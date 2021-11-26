@@ -19,9 +19,9 @@ void setup() {
   pinMode(G, OUTPUT);
   pinMode(B, OUTPUT);
 
-  analogWrite(R, 255);
-  analogWrite(G, 255);
-  analogWrite(B, 255);
+  analogWrite(R, 0);
+  analogWrite(G, 0);
+  analogWrite(B, 0);
   
   Serial.begin(9600);
   Serial.setTimeout(5);
@@ -38,8 +38,8 @@ void smoothFlashing(int speed)
     else
       value_led--;
     if (value_led >= 255 || value_led <= 0) raising = !raising;
-    analogWrite(R, 255 - value_led);
-    analogWrite(B, 255 - value_led);
+    analogWrite(R, value_led);
+    analogWrite(B, value_led);
     Serial.println(value_led);
   }
 }
