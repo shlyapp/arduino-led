@@ -43,10 +43,9 @@ namespace arduino_with_pc
             // connectBtn
             // 
             this.connectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.connectBtn.Location = new System.Drawing.Point(536, 42);
-            this.connectBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.connectBtn.Location = new System.Drawing.Point(357, 27);
             this.connectBtn.Name = "connectBtn";
-            this.connectBtn.Size = new System.Drawing.Size(242, 111);
+            this.connectBtn.Size = new System.Drawing.Size(161, 72);
             this.connectBtn.TabIndex = 0;
             this.connectBtn.Text = "Connect";
             this.connectBtn.UseVisualStyleBackColor = true;
@@ -55,12 +54,11 @@ namespace arduino_with_pc
             // consoleText
             // 
             this.consoleText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.consoleText.Location = new System.Drawing.Point(536, 193);
-            this.consoleText.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.consoleText.Location = new System.Drawing.Point(357, 125);
             this.consoleText.Multiline = true;
             this.consoleText.Name = "consoleText";
             this.consoleText.ReadOnly = true;
-            this.consoleText.Size = new System.Drawing.Size(606, 90);
+            this.consoleText.Size = new System.Drawing.Size(405, 60);
             this.consoleText.TabIndex = 1;
             this.consoleText.TabStop = false;
             this.consoleText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -68,10 +66,9 @@ namespace arduino_with_pc
             // ledBtn
             // 
             this.ledBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ledBtn.Location = new System.Drawing.Point(890, 42);
-            this.ledBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ledBtn.Location = new System.Drawing.Point(593, 27);
             this.ledBtn.Name = "ledBtn";
-            this.ledBtn.Size = new System.Drawing.Size(254, 111);
+            this.ledBtn.Size = new System.Drawing.Size(169, 72);
             this.ledBtn.TabIndex = 2;
             this.ledBtn.Text = "Turn on the LED";
             this.ledBtn.UseVisualStyleBackColor = true;
@@ -79,65 +76,67 @@ namespace arduino_with_pc
             // 
             // redLed
             // 
-            this.redLed.Location = new System.Drawing.Point(56, 101);
+            this.redLed.Location = new System.Drawing.Point(37, 66);
             this.redLed.Name = "redLed";
-            this.redLed.Size = new System.Drawing.Size(50, 433);
+            this.redLed.Size = new System.Drawing.Size(50, 281);
             this.redLed.TabIndex = 3;
             this.redLed.Scroll += new System.Windows.Forms.ScrollEventHandler(this.redLed_Scroll);
             // 
             // greenLed
             // 
-            this.greenLed.Location = new System.Drawing.Point(184, 101);
+            this.greenLed.Location = new System.Drawing.Point(123, 66);
             this.greenLed.Name = "greenLed";
-            this.greenLed.Size = new System.Drawing.Size(50, 433);
+            this.greenLed.Size = new System.Drawing.Size(50, 281);
             this.greenLed.TabIndex = 4;
             this.greenLed.Scroll += new System.Windows.Forms.ScrollEventHandler(this.greenLed_Scroll);
             // 
             // blueLed
             // 
-            this.blueLed.Location = new System.Drawing.Point(302, 101);
+            this.blueLed.Location = new System.Drawing.Point(201, 66);
             this.blueLed.Name = "blueLed";
-            this.blueLed.Size = new System.Drawing.Size(50, 433);
+            this.blueLed.Size = new System.Drawing.Size(50, 281);
             this.blueLed.TabIndex = 5;
             this.blueLed.Scroll += new System.Windows.Forms.ScrollEventHandler(this.blueLed_Scroll);
             // 
             // speedLed
             // 
-            this.speedLed.Location = new System.Drawing.Point(420, 42);
+            this.speedLed.Location = new System.Drawing.Point(280, 27);
             this.speedLed.Name = "speedLed";
-            this.speedLed.Size = new System.Drawing.Size(50, 492);
+            this.speedLed.Size = new System.Drawing.Size(50, 320);
             this.speedLed.TabIndex = 6;
             this.speedLed.Scroll += new System.Windows.Forms.ScrollEventHandler(this.speedLed_Scroll);
             // 
             // infoText
             // 
             this.infoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.infoText.Location = new System.Drawing.Point(56, 13);
+            this.infoText.Location = new System.Drawing.Point(37, 8);
+            this.infoText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.infoText.Multiline = true;
             this.infoText.Name = "infoText";
             this.infoText.ReadOnly = true;
-            this.infoText.Size = new System.Drawing.Size(296, 73);
+            this.infoText.Size = new System.Drawing.Size(199, 49);
             this.infoText.TabIndex = 7;
             this.infoText.TabStop = false;
             this.infoText.Text = "R G B";
-            this.infoText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.infoText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(536, 319);
+            this.textBox1.Location = new System.Drawing.Point(357, 207);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(608, 281);
+            this.textBox1.Size = new System.Drawing.Size(407, 184);
             this.textBox1.TabIndex = 8;
             this.textBox1.TabStop = false;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(1200, 640);
+            this.ClientSize = new System.Drawing.Size(800, 416);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.infoText);
             this.Controls.Add(this.speedLed);
@@ -147,7 +146,6 @@ namespace arduino_with_pc
             this.Controls.Add(this.ledBtn);
             this.Controls.Add(this.consoleText);
             this.Controls.Add(this.connectBtn);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
