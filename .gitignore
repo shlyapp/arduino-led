@@ -1,3 +1,4 @@
+# Visual studio files
 /led-controller/bin
 /led-controller/obj
 /led-controller/Properties
@@ -5,3 +6,4 @@
 /led-controller/led-controller.csproj
 /led-controller/led-controller.sln
 .vs/
+/led-controller/Form1.resx
