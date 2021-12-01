@@ -110,7 +110,7 @@ namespace arduino_with_pc
             // 
             this.infoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.infoText.Location = new System.Drawing.Point(37, 8);
-            this.infoText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.infoText.Margin = new System.Windows.Forms.Padding(2);
             this.infoText.Multiline = true;
             this.infoText.Name = "infoText";
             this.infoText.ReadOnly = true;
@@ -118,12 +118,12 @@ namespace arduino_with_pc
             this.infoText.TabIndex = 7;
             this.infoText.TabStop = false;
             this.infoText.Text = "R G B";
-            this.infoText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.infoText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(357, 207);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
