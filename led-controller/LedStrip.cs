@@ -36,5 +36,13 @@ namespace led_controller
                 return false;
             }
         }
+
+        public void ChangeColor((int red, int green, int blue) color)
+        {
+            _serialPort.Write($"r{255 - color.red}");
+            _serialPort.Write($"g{255 - color.green}");
+            _serialPort.Write($"b{255 - color.blue}");
+        }
+
     }
 }
