@@ -16,7 +16,7 @@ namespace arduino_with_pc
 {
     public partial class Form1 : Form
     {
-        static SerialPort serialPort;
+        LedStrip led = new LedStrip();
   
         public Form1()
         {
@@ -32,18 +32,7 @@ namespace arduino_with_pc
 
         private void connectBtn_Click(object sender, EventArgs e)
         {
-            try
-            {
-                serialPort = new SerialPort(Settings.connectPort, 9600);
-                serialPort.Open();
-                MessageBox.Show($"Успешно подключено к {serialPort.PortName}!");
-
-                connectBtn.Enabled = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            if (led.ConnectToArduino()) connectBtn.Enabled = false;
         }
     }
 }
