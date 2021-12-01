@@ -16,44 +16,37 @@ namespace arduino_with_pc
 {
     public partial class Form1 : Form
     {
-        static SerialPort serialPort;
-  
+        LedStrip led = new LedStrip();
+        
         public Form1()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+            foreach (VScrollBar bar in this.Controls.OfType<VScrollBar>())
+            {
+                bar.Minimum = 0;
+                bar.Maximum = 255;
+                bar.LargeChange = 1;
+                bar.Value = 255;
+            }
         }
 
         private void settingsBtn_Click(object sender, EventArgs e)
         {
-            SettingsForm sd = new SettingsForm();
-            sd.ShowDialog();
+            SettingsForm settings = new SettingsForm();
+            settings.ShowDialog();
         }
 
         private void connectBtn_Click(object sender, EventArgs e)
         {
-            try
-            {
-                serialPort = new SerialPort(Settings.connectPort, 9600);
-                serialPort.Open();
-                MessageBox.Show($"Успешно подключено к {serialPort.PortName}!");
-
-                connectBtn.Enabled = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            if (led.ConnectToArduino()) connectBtn.Enabled = false;
         }
-    }
 
-    public class Led
-    {
-        static float step = 255.0f / 91.0f;
-
-        public static int ConvertValueToPWM(float value)
+        private void ChangeColor(object sender, ScrollEventArgs e)
         {
-            value = value * step;
-            return (int) value;
+            Console.WriteLine($"R={redBar.Value}, G={greenBar.Value}, B={blueBar.Value}");
+            led.ChangeColor((redBar.Value, greenBar.Value, blueBar.Value));
         }
     }
 }

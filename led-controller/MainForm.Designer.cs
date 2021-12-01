@@ -29,11 +29,12 @@ namespace arduino_with_pc
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.connectBtn = new System.Windows.Forms.Button();
-            this.buttonContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.consoleBtn = new System.Windows.Forms.Button();
             this.settingsBtn = new System.Windows.Forms.Button();
+            this.redBar = new System.Windows.Forms.VScrollBar();
+            this.greenBar = new System.Windows.Forms.VScrollBar();
+            this.blueBar = new System.Windows.Forms.VScrollBar();
             this.SuspendLayout();
             // 
             // connectBtn
@@ -43,14 +44,10 @@ namespace arduino_with_pc
             this.connectBtn.Name = "connectBtn";
             this.connectBtn.Size = new System.Drawing.Size(170, 60);
             this.connectBtn.TabIndex = 1;
+            this.connectBtn.TabStop = false;
             this.connectBtn.Text = "Подключить";
             this.connectBtn.UseVisualStyleBackColor = true;
             this.connectBtn.Click += new System.EventHandler(this.connectBtn_Click);
-            // 
-            // buttonContextMenu
-            // 
-            this.buttonContextMenu.Name = "buttonContextMenu";
-            this.buttonContextMenu.Size = new System.Drawing.Size(61, 4);
             // 
             // consoleBtn
             // 
@@ -59,6 +56,7 @@ namespace arduino_with_pc
             this.consoleBtn.Name = "consoleBtn";
             this.consoleBtn.Size = new System.Drawing.Size(170, 60);
             this.consoleBtn.TabIndex = 3;
+            this.consoleBtn.TabStop = false;
             this.consoleBtn.Text = "Консоль";
             this.consoleBtn.UseVisualStyleBackColor = true;
             // 
@@ -69,9 +67,34 @@ namespace arduino_with_pc
             this.settingsBtn.Name = "settingsBtn";
             this.settingsBtn.Size = new System.Drawing.Size(170, 60);
             this.settingsBtn.TabIndex = 4;
+            this.settingsBtn.TabStop = false;
             this.settingsBtn.Text = "Настройки";
             this.settingsBtn.UseVisualStyleBackColor = true;
             this.settingsBtn.Click += new System.EventHandler(this.settingsBtn_Click);
+            // 
+            // redBar
+            // 
+            this.redBar.Location = new System.Drawing.Point(68, 47);
+            this.redBar.Name = "redBar";
+            this.redBar.Size = new System.Drawing.Size(50, 350);
+            this.redBar.TabIndex = 5;
+            this.redBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.ChangeColor);
+            // 
+            // greenBar
+            // 
+            this.greenBar.Location = new System.Drawing.Point(133, 47);
+            this.greenBar.Name = "greenBar";
+            this.greenBar.Size = new System.Drawing.Size(50, 350);
+            this.greenBar.TabIndex = 6;
+            this.greenBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.ChangeColor);
+            // 
+            // blueBar
+            // 
+            this.blueBar.Location = new System.Drawing.Point(197, 47);
+            this.blueBar.Name = "blueBar";
+            this.blueBar.Size = new System.Drawing.Size(50, 350);
+            this.blueBar.TabIndex = 7;
+            this.blueBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.ChangeColor);
             // 
             // Form1
             // 
@@ -79,6 +102,9 @@ namespace arduino_with_pc
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(800, 416);
+            this.Controls.Add(this.blueBar);
+            this.Controls.Add(this.greenBar);
+            this.Controls.Add(this.redBar);
             this.Controls.Add(this.settingsBtn);
             this.Controls.Add(this.consoleBtn);
             this.Controls.Add(this.connectBtn);
@@ -90,10 +116,12 @@ namespace arduino_with_pc
 
         #endregion
 
-        private System.Windows.Forms.Button connectBtn;
-        private System.Windows.Forms.ContextMenuStrip buttonContextMenu;
+        public System.Windows.Forms.Button connectBtn;
         private System.Windows.Forms.Button consoleBtn;
         private System.Windows.Forms.Button settingsBtn;
+        private System.Windows.Forms.VScrollBar redBar;
+        private System.Windows.Forms.VScrollBar greenBar;
+        private System.Windows.Forms.VScrollBar blueBar;
     }
 }
 
