@@ -28,6 +28,22 @@ namespace arduino_with_pc
             SettingsForm sd = new SettingsForm();
             sd.ShowDialog();
         }
+
+        private void connectBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialPort = new SerialPort(Settings.connectPort, 9600);
+                serialPort.Open();
+                MessageBox.Show($"Успешно подключено к {serialPort.PortName}!");
+
+                connectBtn.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 
     public class Led

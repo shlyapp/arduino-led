@@ -24,6 +24,7 @@ namespace led_controller
         private void saveBtn_Click(object sender, EventArgs e)
         {
             Settings.connectPort = portBox.Text;
+            this.Close();
         }
     }
 }

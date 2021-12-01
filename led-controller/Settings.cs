@@ -8,6 +8,6 @@ namespace led_controller
 {
     class Settings
     {
-        public static string connectPort;
+        public static string connectPort = "COM1";
     }
 }

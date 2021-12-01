@@ -32,40 +32,44 @@ namespace arduino_with_pc
             this.components = new System.ComponentModel.Container();
             this.connectBtn = new System.Windows.Forms.Button();
             this.buttonContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.consoleBtn = new System.Windows.Forms.Button();
             this.settingsBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // connectBtn
             // 
+            this.connectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.connectBtn.Location = new System.Drawing.Point(618, 12);
             this.connectBtn.Name = "connectBtn";
             this.connectBtn.Size = new System.Drawing.Size(170, 60);
             this.connectBtn.TabIndex = 1;
-            this.connectBtn.Text = "button1";
+            this.connectBtn.Text = "Подключить";
             this.connectBtn.UseVisualStyleBackColor = true;
+            this.connectBtn.Click += new System.EventHandler(this.connectBtn_Click);
             // 
             // buttonContextMenu
             // 
             this.buttonContextMenu.Name = "buttonContextMenu";
             this.buttonContextMenu.Size = new System.Drawing.Size(61, 4);
             // 
-            // button1
+            // consoleBtn
             // 
-            this.button1.Location = new System.Drawing.Point(618, 100);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(170, 60);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.consoleBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.consoleBtn.Location = new System.Drawing.Point(618, 100);
+            this.consoleBtn.Name = "consoleBtn";
+            this.consoleBtn.Size = new System.Drawing.Size(170, 60);
+            this.consoleBtn.TabIndex = 3;
+            this.consoleBtn.Text = "Консоль";
+            this.consoleBtn.UseVisualStyleBackColor = true;
             // 
             // settingsBtn
             // 
-            this.settingsBtn.Location = new System.Drawing.Point(618, 188);
+            this.settingsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.settingsBtn.Location = new System.Drawing.Point(618, 194);
             this.settingsBtn.Name = "settingsBtn";
             this.settingsBtn.Size = new System.Drawing.Size(170, 60);
             this.settingsBtn.TabIndex = 4;
-            this.settingsBtn.Text = "button1";
+            this.settingsBtn.Text = "Настройки";
             this.settingsBtn.UseVisualStyleBackColor = true;
             this.settingsBtn.Click += new System.EventHandler(this.settingsBtn_Click);
             // 
@@ -76,7 +80,7 @@ namespace arduino_with_pc
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(800, 416);
             this.Controls.Add(this.settingsBtn);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.consoleBtn);
             this.Controls.Add(this.connectBtn);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -88,7 +92,7 @@ namespace arduino_with_pc
 
         private System.Windows.Forms.Button connectBtn;
         private System.Windows.Forms.ContextMenuStrip buttonContextMenu;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button consoleBtn;
         private System.Windows.Forms.Button settingsBtn;
     }
 }
