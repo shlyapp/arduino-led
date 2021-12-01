@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO.Ports;
 
 namespace led_controller
 {
@@ -15,6 +16,14 @@ namespace led_controller
         public SettingsForm()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            portBox.Items.AddRange(SerialPort.GetPortNames());  
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            Settings.connectPort = portBox.Text;
         }
     }
 }
