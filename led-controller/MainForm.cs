@@ -27,10 +27,8 @@ namespace arduino_with_pc
             {
                 bar.Minimum = 0;
                 bar.Maximum = 255;
-                bar.LargeChange = 10;
-                bar.SmallChange = 1;
+                bar.LargeChange = 1;
                 bar.Value = 255;
-                bar.Enabled = false;
             }
         }
 
@@ -42,14 +40,7 @@ namespace arduino_with_pc
 
         private void connectBtn_Click(object sender, EventArgs e)
         {
-            if (led.ConnectToArduino())
-            {
-                connectBtn.Enabled = false;
-                foreach (VScrollBar bar in this.Controls.OfType<VScrollBar>())
-                {
-                    bar.Enabled = true;
-                }
-            }
+            if (led.ConnectToArduino()) connectBtn.Enabled = false;
         }
 
         private void ChangeColor(object sender, ScrollEventArgs e)
