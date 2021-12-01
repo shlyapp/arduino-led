@@ -17,11 +17,19 @@ namespace arduino_with_pc
     public partial class Form1 : Form
     {
         LedStrip led = new LedStrip();
-  
+        
         public Form1()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+
+            foreach (VScrollBar bar in this.Controls.OfType<VScrollBar>())
+            {
+                bar.Minimum = 0;
+                bar.Maximum = 255;
+                bar.LargeChange = 1;
+                bar.Value = 255;
+            }
         }
 
         private void settingsBtn_Click(object sender, EventArgs e)
@@ -33,6 +41,11 @@ namespace arduino_with_pc
         private void connectBtn_Click(object sender, EventArgs e)
         {
             if (led.ConnectToArduino()) connectBtn.Enabled = false;
+        }
+
+        private void ChangeColor(object sender, ScrollEventArgs e)
+        {
+            Console.WriteLine($"R={redBar.Value}, G={greenBar.Value}, B={blueBar.Value}");
         }
     }
 }
