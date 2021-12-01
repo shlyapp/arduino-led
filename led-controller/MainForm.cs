@@ -46,15 +46,4 @@ namespace arduino_with_pc
             }
         }
     }
-
-    public class Led
-    {
-        static float step = 255.0f / 91.0f;
-
-        public static int ConvertValueToPWM(float value)
-        {
-            value = value * step;
-            return (int) value;
-        }
-    }
 }
