@@ -21,12 +21,13 @@ namespace arduino_with_pc
         public Form1()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void settingsBtn_Click(object sender, EventArgs e)
         {
-            SettingsForm sd = new SettingsForm();
-            sd.ShowDialog();
+            SettingsForm settings = new SettingsForm();
+            settings.ShowDialog();
         }
 
         private void connectBtn_Click(object sender, EventArgs e)

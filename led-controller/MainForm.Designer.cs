@@ -43,6 +43,7 @@ namespace arduino_with_pc
             this.connectBtn.Name = "connectBtn";
             this.connectBtn.Size = new System.Drawing.Size(170, 60);
             this.connectBtn.TabIndex = 1;
+            this.connectBtn.TabStop = false;
             this.connectBtn.Text = "Подключить";
             this.connectBtn.UseVisualStyleBackColor = true;
             this.connectBtn.Click += new System.EventHandler(this.connectBtn_Click);
@@ -59,6 +60,7 @@ namespace arduino_with_pc
             this.consoleBtn.Name = "consoleBtn";
             this.consoleBtn.Size = new System.Drawing.Size(170, 60);
             this.consoleBtn.TabIndex = 3;
+            this.consoleBtn.TabStop = false;
             this.consoleBtn.Text = "Консоль";
             this.consoleBtn.UseVisualStyleBackColor = true;
             // 
@@ -69,6 +71,7 @@ namespace arduino_with_pc
             this.settingsBtn.Name = "settingsBtn";
             this.settingsBtn.Size = new System.Drawing.Size(170, 60);
             this.settingsBtn.TabIndex = 4;
+            this.settingsBtn.TabStop = false;
             this.settingsBtn.Text = "Настройки";
             this.settingsBtn.UseVisualStyleBackColor = true;
             this.settingsBtn.Click += new System.EventHandler(this.settingsBtn_Click);
@@ -90,7 +93,7 @@ namespace arduino_with_pc
 
         #endregion
 
-        private System.Windows.Forms.Button connectBtn;
+        public System.Windows.Forms.Button connectBtn;
         private System.Windows.Forms.ContextMenuStrip buttonContextMenu;
         private System.Windows.Forms.Button consoleBtn;
         private System.Windows.Forms.Button settingsBtn;
