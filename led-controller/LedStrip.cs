@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.IO.Ports;
 using System.Windows.Forms;
 
-using arduino_with_pc;
+using LedController;
 
-namespace led_controller
+namespace LedController
 {
     class LedStrip
     {
@@ -23,7 +23,7 @@ namespace led_controller
         { 
             try
             {
-                _serialPort = new SerialPort(Form1.settings.connectPort, 9600);
+                _serialPort = new SerialPort(MainForm.settings.connectPort, 9600);
                 _serialPort.Open();
                 MessageBox.Show($"Успешно подключено к {_serialPort.PortName}!");
 

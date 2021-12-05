@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-
-namespace led_controller
+namespace LedController
 {
     public class Settings
     {

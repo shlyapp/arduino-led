@@ -13,9 +13,9 @@ using Newtonsoft;
 using Newtonsoft.Json;
 using System.IO;
 
-using arduino_with_pc;
+using LedController;
 
-namespace led_controller
+namespace LedController.Settings
 {
     public partial class SettingsForm : Form
     {
@@ -30,9 +30,9 @@ namespace led_controller
         private void saveBtn_Click(object sender, EventArgs e)
         {
 
-            Form1.settings.connectPort = portBox.Text;
+            MainForm.settings.connectPort = portBox.Text;
 
-            var a = JsonConvert.SerializeObject(Form1.settings);
+            var a = JsonConvert.SerializeObject(MainForm.settings);
             File.WriteAllText("settings.json", a);
 
             this.Close();  

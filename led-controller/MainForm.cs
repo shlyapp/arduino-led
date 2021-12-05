@@ -10,20 +10,20 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.Threading;
 
-using led_controller;
+using LedController.Settings;
 using Newtonsoft;
 using Newtonsoft.Json;
 using System.IO;
 
 
-namespace arduino_with_pc
+namespace LedController
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         LedStrip led = new LedStrip();
-        public static Settings settings = new Settings();
+        public static Settings.Settings settings = new Settings.Settings();
         
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -65,7 +65,7 @@ namespace arduino_with_pc
         private void Form1_Load(object sender, EventArgs e)
         {
             string jsonData = File.ReadAllText("settings.json");
-            settings = JsonConvert.DeserializeObject<Settings>(jsonData);
+            settings = JsonConvert.DeserializeObject<Settings.Settings>(jsonData);
         }
     }
 }

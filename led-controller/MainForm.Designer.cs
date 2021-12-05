@@ -1,7 +1,7 @@
 ﻿
-namespace arduino_with_pc
+namespace LedController
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
