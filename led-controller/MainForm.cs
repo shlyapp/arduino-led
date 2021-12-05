@@ -21,7 +21,6 @@ namespace LedController
     public partial class MainForm : Form
     {
         LedStrip led = new LedStrip();
-        public static Settings.Settings settings = new Settings.Settings();
         
         public MainForm()
         {
@@ -64,7 +63,7 @@ namespace LedController
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            settings.LoadFromJson();
+            AppSettings.getInstance().LoadFromJson();
         }
     }
 }

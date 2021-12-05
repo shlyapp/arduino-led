@@ -29,9 +29,9 @@ namespace LedController.Settings
 
         private void saveBtn_Click(object sender, EventArgs e)
         { 
-            MainForm.settings.connectPort = portBox.Text;
+            AppSettings.getInstance().ConnectPort = portBox.Text;
 
-            MainForm.settings.SaveToJson();
+            AppSettings.getInstance().SaveToJson();
 
             this.Close();  
         }

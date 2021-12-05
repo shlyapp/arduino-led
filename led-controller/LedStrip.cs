@@ -23,7 +23,7 @@ namespace LedController
         { 
             try
             {
-                _serialPort = new SerialPort(MainForm.settings.connectPort, 9600);
+                _serialPort = new SerialPort(Settings.AppSettings.getInstance().ConnectPort, 9600);
                 _serialPort.Open();
                 MessageBox.Show($"Успешно подключено к {_serialPort.PortName}!");
 

@@ -8,13 +8,27 @@ using System.Threading.Tasks;
 
 namespace LedController.Settings
 {
-    public class Settings
+    public class AppSettings
     {
-        public string connectPort = "COM1";
+        private static AppSettings instance;
+
+        private AppSettings()
+        {
+            ConnectPort = "COM1";
+        }
+
+        public string ConnectPort { get; set; }
+
+        public static AppSettings getInstance()
+        {
+            if (instance == null)
+                instance = new AppSettings();
+            return instance;
+        }
 
         public void SaveToJson()
         {
-            var a = JsonConvert.SerializeObject(MainForm.settings);
+            var a = JsonConvert.SerializeObject(this);
             File.WriteAllText("settings.json", a);
         }
 
@@ -23,7 +37,7 @@ namespace LedController.Settings
             try
             {
                 string jsonData = File.ReadAllText("settings.json");
-                MainForm.settings = JsonConvert.DeserializeObject<Settings>(jsonData);
+                instance = JsonConvert.DeserializeObject<AppSettings>(jsonData);
             }
             catch (Exception)
             {
