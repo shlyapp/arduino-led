@@ -1,24 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using LedController.Settings;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO.Ports;
-using System.Threading;
 
-using led_controller;
 
-namespace arduino_with_pc
+namespace LedController
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        LedStrip led = new LedStrip();
+        LedStrip led;
         
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -32,13 +24,13 @@ namespace arduino_with_pc
             }
         }
 
-        private void settingsBtn_Click(object sender, EventArgs e)
+        private void SettingsBtn_Click(object sender, EventArgs e)
         {
             SettingsForm settings = new SettingsForm();
             settings.ShowDialog();
         }
 
-        private void connectBtn_Click(object sender, EventArgs e)
+        private void ConnectBtn_Click(object sender, EventArgs e)
         {
             if (led.ConnectToArduino()) connectBtn.Enabled = false;
         }
@@ -47,6 +39,12 @@ namespace arduino_with_pc
         {
             Console.WriteLine($"R={redBar.Value}, G={greenBar.Value}, B={blueBar.Value}");
             led.ChangeColor((redBar.Value, greenBar.Value, blueBar.Value));
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            AppSettings.GetInstance().LoadFromJson();
+            led = new LedStrip();
         }
     }
 }

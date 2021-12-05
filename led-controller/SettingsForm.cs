@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO.Ports;
+using System.Windows.Forms;
 
-namespace led_controller
+namespace LedController.Settings
 {
     public partial class SettingsForm : Form
     {
@@ -22,9 +15,12 @@ namespace led_controller
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
-        {
-            Settings.connectPort = portBox.Text;
-            this.Close();
+        { 
+            AppSettings.GetInstance().ConnectPort = portBox.Text;
+
+            AppSettings.GetInstance().SaveToJson();
+
+            this.Close();  
         }
     }
 }

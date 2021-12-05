@@ -1,5 +1,5 @@
 ﻿
-namespace led_controller
+namespace LedController.Settings
 {
     partial class SettingsForm
     {
