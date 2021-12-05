@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
 namespace led_controller
 {
-    class Settings
+    public class Settings
     {
-        public static string connectPort = "COM1";
+        public string connectPort = "COM1";
     }
 }

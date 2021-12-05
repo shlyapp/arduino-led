@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO.Ports;
 using System.Windows.Forms;
 
-using led_controller;
+using arduino_with_pc;
 
 namespace led_controller
 {
@@ -23,7 +23,7 @@ namespace led_controller
         { 
             try
             {
-                _serialPort = new SerialPort(Settings.connectPort, 9600);
+                _serialPort = new SerialPort(Form1.settings.connectPort, 9600);
                 _serialPort.Open();
                 MessageBox.Show($"Успешно подключено к {_serialPort.PortName}!");
 

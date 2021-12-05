@@ -11,12 +11,17 @@ using System.IO.Ports;
 using System.Threading;
 
 using led_controller;
+using Newtonsoft;
+using Newtonsoft.Json;
+using System.IO;
+
 
 namespace arduino_with_pc
 {
     public partial class Form1 : Form
     {
         LedStrip led = new LedStrip();
+        public static Settings settings = new Settings();
         
         public Form1()
         {
@@ -55,6 +60,12 @@ namespace arduino_with_pc
         {
             Console.WriteLine($"R={redBar.Value}, G={greenBar.Value}, B={blueBar.Value}");
             led.ChangeColor((redBar.Value, greenBar.Value, blueBar.Value));
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            string jsonData = File.ReadAllText("settings.json");
+            settings = JsonConvert.DeserializeObject<Settings>(jsonData);
         }
     }
 }
