@@ -28,12 +28,10 @@ namespace LedController.Settings
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
-        {
-
+        { 
             MainForm.settings.connectPort = portBox.Text;
 
-            var a = JsonConvert.SerializeObject(MainForm.settings);
-            File.WriteAllText("settings.json", a);
+            MainForm.settings.SaveToJson();
 
             this.Close();  
         }

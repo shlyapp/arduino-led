@@ -96,7 +96,7 @@ namespace LedController
             this.blueBar.TabIndex = 7;
             this.blueBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.ChangeColor);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -108,9 +108,9 @@ namespace LedController
             this.Controls.Add(this.settingsBtn);
             this.Controls.Add(this.consoleBtn);
             this.Controls.Add(this.connectBtn);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 
         }

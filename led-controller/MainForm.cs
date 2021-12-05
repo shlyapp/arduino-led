@@ -62,10 +62,9 @@ namespace LedController
             led.ChangeColor((redBar.Value, greenBar.Value, blueBar.Value));
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
-            string jsonData = File.ReadAllText("settings.json");
-            settings = JsonConvert.DeserializeObject<Settings.Settings>(jsonData);
+            settings.LoadFromJson();
         }
     }
 }
