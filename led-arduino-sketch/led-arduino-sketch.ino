@@ -1,10 +1,12 @@
+#include "EEPROM.h"
+
 #define R 10
 #define G 9
 #define B 11
 
-int r_;
-int g_;
-int b_;
+byte r_;
+byte g_;
+byte b_;
 
 unsigned long int current_millis;
 int value_led;
@@ -25,6 +27,14 @@ void setup() {
   
   Serial.begin(9600);
   Serial.setTimeout(5);
+
+  r_ = EEPROM[0];
+  g_ = EEPROM[1];
+  b_ = EEPROM[2];
+
+  Serial.println(r_);
+  Serial.println(g_);
+  Serial.println(b_);
 
 }
 
@@ -53,23 +63,33 @@ void loop() {
     {
       case 'r':
         r_ = serial_val;
+        EEPROM.update(0, r_);
         analogWrite(R, r_);
         break;
       case 'g':
         g_ = serial_val;
+        EEPROM.update(1, g_);
         analogWrite(G, g_);
         break;
       case 'b':
         b_ = serial_val;
+        EEPROM.update(2, b_);
         analogWrite(B, b_);
         break;
     }
   }
-
+  
+  
+  
   switch (key)
   {
     case 'e':
       smoothFlashing(serial_val / 100);
+      break;
+    default:
+      analogWrite(R, r_);
+      analogWrite(G, g_);
+      analogWrite(B, b_);
       break;
   }
 }
