@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO.Ports;
 using System.Windows.Forms;
-
-using LedController;
 
 namespace LedController
 {
@@ -14,16 +8,11 @@ namespace LedController
     {
         private SerialPort _serialPort;
 
-        public LedStrip()
-        {
-            
-        }
-
         public bool ConnectToArduino()
         { 
             try
             {
-                _serialPort = new SerialPort(Settings.AppSettings.getInstance().ConnectPort, 9600);
+                _serialPort = new SerialPort(Settings.AppSettings.GetInstance().ConnectPort, 9600);
                 _serialPort.Open();
                 MessageBox.Show($"Успешно подключено к {_serialPort.PortName}!");
 

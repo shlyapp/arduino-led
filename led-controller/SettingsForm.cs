@@ -1,19 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO.Ports;
-
-using Newtonsoft;
-using Newtonsoft.Json;
-using System.IO;
-
-using LedController;
+using System.Windows.Forms;
 
 namespace LedController.Settings
 {
@@ -29,9 +16,9 @@ namespace LedController.Settings
 
         private void saveBtn_Click(object sender, EventArgs e)
         { 
-            AppSettings.getInstance().ConnectPort = portBox.Text;
+            AppSettings.GetInstance().ConnectPort = portBox.Text;
 
-            AppSettings.getInstance().SaveToJson();
+            AppSettings.GetInstance().SaveToJson();
 
             this.Close();  
         }

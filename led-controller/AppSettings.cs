@@ -1,10 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LedController.Settings
 {
@@ -19,18 +15,14 @@ namespace LedController.Settings
 
         public string ConnectPort { get; set; }
 
-        public static AppSettings getInstance()
+        public static AppSettings GetInstance()
         {
             if (instance == null)
                 instance = new AppSettings();
             return instance;
         }
 
-        public void SaveToJson()
-        {
-            var a = JsonConvert.SerializeObject(this);
-            File.WriteAllText("settings.json", a);
-        }
+        public void SaveToJson() => File.WriteAllText("settings.json", JsonConvert.SerializeObject(this));
 
         public void LoadFromJson()
         {

@@ -37,17 +37,17 @@ namespace LedController
             this.blueBar = new System.Windows.Forms.VScrollBar();
             this.SuspendLayout();
             // 
-            // connectBtn
+            // ConnectBtn
             // 
             this.connectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.connectBtn.Location = new System.Drawing.Point(618, 12);
-            this.connectBtn.Name = "connectBtn";
+            this.connectBtn.Name = "ConnectBtn";
             this.connectBtn.Size = new System.Drawing.Size(170, 60);
             this.connectBtn.TabIndex = 1;
             this.connectBtn.TabStop = false;
             this.connectBtn.Text = "Подключить";
             this.connectBtn.UseVisualStyleBackColor = true;
-            this.connectBtn.Click += new System.EventHandler(this.connectBtn_Click);
+            this.connectBtn.Click += new System.EventHandler(this.ConnectBtn_Click);
             // 
             // consoleBtn
             // 
@@ -70,7 +70,7 @@ namespace LedController
             this.settingsBtn.TabStop = false;
             this.settingsBtn.Text = "Настройки";
             this.settingsBtn.UseVisualStyleBackColor = true;
-            this.settingsBtn.Click += new System.EventHandler(this.settingsBtn_Click);
+            this.settingsBtn.Click += new System.EventHandler(this.SettingsBtn_Click);
             // 
             // redBar
             // 

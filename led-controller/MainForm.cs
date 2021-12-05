@@ -1,26 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using LedController.Settings;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO.Ports;
-using System.Threading;
-
-using LedController.Settings;
-using Newtonsoft;
-using Newtonsoft.Json;
-using System.IO;
 
 
 namespace LedController
 {
     public partial class MainForm : Form
     {
-        LedStrip led = new LedStrip();
+        LedStrip led;
         
         public MainForm()
         {
@@ -37,13 +25,13 @@ namespace LedController
             }
         }
 
-        private void settingsBtn_Click(object sender, EventArgs e)
+        private void SettingsBtn_Click(object sender, EventArgs e)
         {
             SettingsForm settings = new SettingsForm();
             settings.ShowDialog();
         }
 
-        private void connectBtn_Click(object sender, EventArgs e)
+        private void ConnectBtn_Click(object sender, EventArgs e)
         {
             if (led.ConnectToArduino())
             {
@@ -63,7 +51,8 @@ namespace LedController
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            AppSettings.getInstance().LoadFromJson();
+            AppSettings.GetInstance().LoadFromJson();
+            led = new LedStrip();
         }
     }
 }
