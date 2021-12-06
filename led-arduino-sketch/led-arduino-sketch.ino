@@ -63,23 +63,23 @@ void loop() {
     {
       case 'r':
         r_ = serial_val;
-        EEPROM.update(0, r_);
         analogWrite(R, r_);
         break;
       case 'g':
         g_ = serial_val;
-        EEPROM.update(1, g_);
         analogWrite(G, g_);
         break;
       case 'b':
         b_ = serial_val;
-        EEPROM.update(2, b_);
         analogWrite(B, b_);
         break;
+      case 's':
+        EEPROM.update(0, r_);
+        EEPROM.update(1, g_);
+        EEPROM.update(2, b_);
+        Serial.println("данные сохранены!");
     }
   }
-  
-  
   
   switch (key)
   {

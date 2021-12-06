@@ -11,9 +11,12 @@ namespace LedController.Settings
         private AppSettings()
         {
             ConnectPort = "COM1";
+            AutoSave = false;
         }
 
         public string ConnectPort { get; set; }
+
+        public bool AutoSave { get; set; }
 
         public static AppSettings GetInstance()
         {

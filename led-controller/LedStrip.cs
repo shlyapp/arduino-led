@@ -4,9 +4,11 @@ using System.Windows.Forms;
 
 namespace LedController
 {
-    class LedStrip
+    public class LedStrip
     {
         private SerialPort _serialPort;
+
+        public bool IsConnected { get; set; }
 
         public bool ConnectToArduino()
         { 
@@ -16,11 +18,15 @@ namespace LedController
                 _serialPort.Open();
                 MessageBox.Show($"Успешно подключено к {_serialPort.PortName}!");
 
+                IsConnected = true;
+
                 return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+
+                IsConnected = false;
 
                 return false;
             }
@@ -31,6 +37,12 @@ namespace LedController
             _serialPort.Write($"r{255 - color.red}");
             _serialPort.Write($"g{255 - color.green}");
             _serialPort.Write($"b{255 - color.blue}");
+        }
+
+        public void SaveColorInArduino()
+        {
+            _serialPort.Write("s1");
+            Console.WriteLine("Успешно сохранено!");
         }
 
     }
