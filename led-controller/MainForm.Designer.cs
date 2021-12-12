@@ -37,11 +37,11 @@ namespace LedController
             this.blueBar = new System.Windows.Forms.VScrollBar();
             this.SuspendLayout();
             // 
-            // ConnectBtn
+            // connectBtn
             // 
             this.connectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.connectBtn.Location = new System.Drawing.Point(618, 12);
-            this.connectBtn.Name = "ConnectBtn";
+            this.connectBtn.Name = "connectBtn";
             this.connectBtn.Size = new System.Drawing.Size(170, 60);
             this.connectBtn.TabIndex = 1;
             this.connectBtn.TabStop = false;
@@ -110,6 +110,7 @@ namespace LedController
             this.Controls.Add(this.connectBtn);
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 

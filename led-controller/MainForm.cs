@@ -8,7 +8,7 @@ namespace LedController
 {
     public partial class MainForm : Form
     {
-        LedStrip led;
+        static public LedStrip led;
         
         public MainForm()
         {
@@ -45,6 +45,14 @@ namespace LedController
         {
             AppSettings.GetInstance().LoadFromJson();
             led = new LedStrip();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (AppSettings.GetInstance().AutoSave)
+            {
+                led.SaveColorInArduino();
+            }
         }
     }
 }
