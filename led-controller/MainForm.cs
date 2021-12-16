@@ -1,5 +1,6 @@
 ﻿using LedController.Settings;
 using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -14,6 +15,8 @@ namespace LedController
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+
+            colorDialog.FullOpen = true;
 
             foreach (VScrollBar bar in this.Controls.OfType<VScrollBar>())
             {
@@ -61,6 +64,16 @@ namespace LedController
             {
                 led.SaveColorInArduino();
             }
+        }
+
+        private void changeColorBtn_Click(object sender, EventArgs e)
+        {
+            if (colorDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            Console.WriteLine(colorDialog.Color.ToString());
+            Console.WriteLine(colorDialog.Color.ToArgb());
+            Console.WriteLine(ColorTranslator.ToHtml(ColorTranslator.FromHtml(colorDialog.Color.ToArgb().ToString())));
         }
     }
 }

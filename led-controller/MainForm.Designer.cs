@@ -35,6 +35,9 @@ namespace LedController
             this.redBar = new System.Windows.Forms.VScrollBar();
             this.greenBar = new System.Windows.Forms.VScrollBar();
             this.blueBar = new System.Windows.Forms.VScrollBar();
+            this.changeColorBtn = new System.Windows.Forms.Button();
+            this.randomBtn = new System.Windows.Forms.Button();
+            this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.SuspendLayout();
             // 
             // connectBtn
@@ -74,7 +77,7 @@ namespace LedController
             // 
             // redBar
             // 
-            this.redBar.Location = new System.Drawing.Point(68, 47);
+            this.redBar.Location = new System.Drawing.Point(180, 47);
             this.redBar.Name = "redBar";
             this.redBar.Size = new System.Drawing.Size(50, 350);
             this.redBar.TabIndex = 5;
@@ -82,7 +85,7 @@ namespace LedController
             // 
             // greenBar
             // 
-            this.greenBar.Location = new System.Drawing.Point(133, 47);
+            this.greenBar.Location = new System.Drawing.Point(246, 47);
             this.greenBar.Name = "greenBar";
             this.greenBar.Size = new System.Drawing.Size(50, 350);
             this.greenBar.TabIndex = 6;
@@ -90,11 +93,32 @@ namespace LedController
             // 
             // blueBar
             // 
-            this.blueBar.Location = new System.Drawing.Point(197, 47);
+            this.blueBar.Location = new System.Drawing.Point(313, 47);
             this.blueBar.Name = "blueBar";
             this.blueBar.Size = new System.Drawing.Size(50, 350);
             this.blueBar.TabIndex = 7;
             this.blueBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.ChangeColor);
+            // 
+            // changeColorBtn
+            // 
+            this.changeColorBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.changeColorBtn.Location = new System.Drawing.Point(13, 47);
+            this.changeColorBtn.Name = "changeColorBtn";
+            this.changeColorBtn.Size = new System.Drawing.Size(155, 70);
+            this.changeColorBtn.TabIndex = 8;
+            this.changeColorBtn.Text = "Выбрать цвет";
+            this.changeColorBtn.UseVisualStyleBackColor = true;
+            this.changeColorBtn.Click += new System.EventHandler(this.changeColorBtn_Click);
+            // 
+            // randomBtn
+            // 
+            this.randomBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.randomBtn.Location = new System.Drawing.Point(12, 137);
+            this.randomBtn.Name = "randomBtn";
+            this.randomBtn.Size = new System.Drawing.Size(155, 70);
+            this.randomBtn.TabIndex = 9;
+            this.randomBtn.Text = "Случайный цвет";
+            this.randomBtn.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -102,6 +126,8 @@ namespace LedController
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(800, 416);
+            this.Controls.Add(this.randomBtn);
+            this.Controls.Add(this.changeColorBtn);
             this.Controls.Add(this.blueBar);
             this.Controls.Add(this.greenBar);
             this.Controls.Add(this.redBar);
@@ -124,6 +150,9 @@ namespace LedController
         private System.Windows.Forms.VScrollBar redBar;
         private System.Windows.Forms.VScrollBar greenBar;
         private System.Windows.Forms.VScrollBar blueBar;
+        private System.Windows.Forms.Button changeColorBtn;
+        private System.Windows.Forms.Button randomBtn;
+        private System.Windows.Forms.ColorDialog colorDialog;
     }
 }
 
