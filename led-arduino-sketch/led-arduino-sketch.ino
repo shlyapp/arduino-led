@@ -1,95 +1,97 @@
+#include <GParser.h>
 #include "EEPROM.h"
 
-#define R 10
-#define G 9
-#define B 11
+#define R_PIN 9
+#define G_PIN 10
+#define B_PIN 11
 
-byte r_;
-byte g_;
-byte b_;
+///////////////////////////////////////////////////////////////////////////////
 
+byte rgb[3];
+byte last_rgb[3] = {0, 0, 0};
+
+// счетчик для задержек
 unsigned long int current_millis;
-int value_led;
-int serial_val;
-bool raising = true;
 
-char key;
-int mode;
+int key;
 
-void setup() {
-  pinMode(R, OUTPUT);
-  pinMode(G, OUTPUT);
-  pinMode(B, OUTPUT);
+///////////////////////////////////////////////////////////////////////////////
 
-  analogWrite(R, 0);
-  analogWrite(G, 0);
-  analogWrite(B, 0);
-  
+void setup()
+{
+  // установка пинов
+  pinMode(R_PIN, OUTPUT);
+  pinMode(G_PIN, OUTPUT);
+  pinMode(B_PIN, OUTPUT);
+
+  // установка значение для порта
   Serial.begin(9600);
   Serial.setTimeout(5);
 
-  r_ = EEPROM[0];
-  g_ = EEPROM[1];
-  b_ = EEPROM[2];
-
-  Serial.println(r_);
-  Serial.println(g_);
-  Serial.println(b_);
-
+  // считавание данных из памяти
+  rgb[0] = EEPROM[0];
+  rgb[1] = EEPROM[1];
+  rgb[2] = EEPROM[2];
+  for (int i = 0; i < 3; i++) Serial.println(rgb[i]);
+  
 }
 
-void smoothFlashing(int speed)
+///////////////////////////////////////////////////////////////////////////////
+
+void ledOn(int speed = 5)
 {
   if (millis() - current_millis > speed)
   {
     current_millis = millis();
-    if (raising) 
-      value_led++;
-    else
-      value_led--;
-    if (value_led >= 255 || value_led <= 0) raising = !raising;
-    analogWrite(R, value_led);
-    analogWrite(B, value_led);
-    Serial.println(value_led);
-  }
-}
-
-void loop() {
-  if (Serial.available() > 1)
-  {
-    key = Serial.read();
-    serial_val = 255 - Serial.parseInt();
-    switch (key)
+    for (int i = 0; i < 3; i++)
     {
-      case 'r':
-        r_ = serial_val;
-        analogWrite(R, r_);
-        break;
-      case 'g':
-        g_ = serial_val;
-        analogWrite(G, g_);
-        break;
-      case 'b':
-        b_ = serial_val;
-        analogWrite(B, b_);
-        break;
-      case 's':
-        EEPROM.update(0, r_);
-        EEPROM.update(1, g_);
-        EEPROM.update(2, b_);
-        Serial.println("данные сохранены!");
+      if (rgb[i] > last_rgb[i])
+      {
+        last_rgb[i]++;
+      }
+      if (rgb[i] < last_rgb[i])
+      {
+        last_rgb[i]--;
+      }
+      analogWrite(9 + i, last_rgb[i]);
     }
   }
-  
-  switch (key)
+  //analogWrite(R_PIN, rgb[0]);
+  //analogWrite(G_PIN, rgb[1]);
+  //analogWrite(B_PIN, rgb[2]);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+void loop()
+{
+  // парсинг данных
+  if (Serial.available())
   {
-    case 'e':
-      smoothFlashing(serial_val / 100);
-      break;
-    default:
-      analogWrite(R, r_);
-      analogWrite(G, g_);
-      analogWrite(B, b_);
+    char str[30];
+    int amount = Serial.readBytesUntil(';', str, 150);
+    str[amount] = NULL;
+
+    GParser data(str, ',');
+    int ints[10];
+    int am = data.parseInts(ints);
+    key = ints[0];
+    
+    // режимы
+    switch(ints[0])
+    {
+      // установка цвета
+      case 0:
+        for (int i = 1; i < am; i++) rgb[i - 1] = ints[i];
+        break;
+    }
+  }
+
+  switch(key)
+  {
+    case 1:
+      ledOn();
       break;
   }
+  
 }
