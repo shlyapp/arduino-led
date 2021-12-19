@@ -7,6 +7,26 @@ namespace LedController
     public class LedStrip
     {
         private SerialPort _serialPort;
+        private int[] _rgb;
+
+        public int[] Color
+        { 
+            get
+            {
+                return _rgb;
+            }
+            set
+            {
+                _serialPort.Write($"r{255 - _rgb[0]}");
+                _serialPort.Write($"g{255 - _rgb[1]}");
+                _serialPort.Write($"b{255 - _rgb[2]}");
+            }
+        }
+
+        public LedStrip()
+        {
+            _rgb = new int[3];
+        }
 
         public bool IsConnected { get; set; }
 
@@ -42,7 +62,6 @@ namespace LedController
         public void SaveColorInArduino()
         {
             _serialPort.Write("s1");
-            Console.WriteLine("Успешно сохранено!");
         }
 
     }

@@ -71,9 +71,8 @@ namespace LedController
             if (colorDialog.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            Console.WriteLine(colorDialog.Color.ToString());
-            Console.WriteLine(colorDialog.Color.ToArgb());
-            Console.WriteLine(ColorTranslator.ToHtml(ColorTranslator.FromHtml(colorDialog.Color.ToArgb().ToString())));
+            Console.WriteLine($"{colorDialog.Color.R}, {colorDialog.Color.G}, {colorDialog.Color.B}");
+            led.ChangeColor((colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B));
         }
     }
 }
