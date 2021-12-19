@@ -48,7 +48,7 @@ namespace LedController
 
         private void ChangeColor(object sender, ScrollEventArgs e)
         {
-            Console.WriteLine($"R={redBar.Value}, G={greenBar.Value}, B={blueBar.Value}");
+            //Console.WriteLine($"R={redBar.Value}, G={greenBar.Value}, B={blueBar.Value}");
             led.ChangeColor((redBar.Value, greenBar.Value, blueBar.Value));
         }
 

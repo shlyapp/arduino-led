@@ -34,7 +34,7 @@ namespace LedController
         { 
             try
             {
-                _serialPort = new SerialPort(Settings.AppSettings.GetInstance().ConnectPort, 9600);
+                _serialPort = new SerialPort(Settings.AppSettings.GetInstance().ConnectPort, 500000);
                 _serialPort.Open();
                 MessageBox.Show($"Успешно подключено к {_serialPort.PortName}!");
 
@@ -54,9 +54,8 @@ namespace LedController
 
         public void ChangeColor((int red, int green, int blue) color)
         {
-            _serialPort.Write($"r{255 - color.red}");
-            _serialPort.Write($"g{255 - color.green}");
-            _serialPort.Write($"b{255 - color.blue}");
+            _serialPort.WriteLine($"{0},{color.red},{color.green},{color.blue}");
+            Console.WriteLine($"{0},{255 - color.red},{255 - color.green},{255 - color.blue}");
         }
 
         public void SaveColorInArduino()
