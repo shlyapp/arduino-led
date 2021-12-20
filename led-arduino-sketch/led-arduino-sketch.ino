@@ -13,7 +13,8 @@ byte last_rgb[3] = {0, 0, 0};
 // счетчик для задержек
 unsigned long int current_millis;
 
-int mode = 1;
+char mode = 'a';
+int speed_change = 20;
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -24,6 +25,10 @@ void setup()
   pinMode(G_PIN, OUTPUT);
   pinMode(B_PIN, OUTPUT);
 
+  analogWrite(R_PIN, 0);
+  analogWrite(G_PIN, 0);
+  analogWrite(B_PIN, 0);
+   
   // установка значение для порта
   Serial.begin(500000);
   Serial.setTimeout(5);
@@ -38,9 +43,9 @@ void setup()
 ///////////////////////////////////////////////////////////////////////////////
 
 // плавная смена цвета
-void smoothColorChange(int speed = 20)
+void smoothColorChange()
 {
-  if (millis() - current_millis > speed)
+  if (millis() - current_millis > speed_change)
   {
     current_millis = millis();
     for (int i = 0; i < 3; i++)
@@ -70,6 +75,14 @@ void changeColor()
 
 ///////////////////////////////////////////////////////////////////////////////
 
+void saveData()
+{
+  EEPROM.update(0, rgb[0]);
+  EEPROM.update(1, rgb[1]);
+  EEPROM.update(2, rgb[2]);
+}
+
+///////////////////////////////////////////////////////////////////////////////
 void loop()
 {
   // парсинг данных
@@ -89,20 +102,32 @@ void loop()
       // установка цвета
       case 0:
         for (int i = 1; i < am; i++) rgb[i - 1] = ints[i];
-        mode = 1;
+        mode = 'a';
+        break;
+      case 1:
+        for (int i = 1; i < am; i++) rgb[i - 1] = ints[i];
+        mode = 'b';
         break;
       case 2:
         for (int i = 0; i < 3; i++) rgb[i] = 0;
+        mode = 'a';
+        break;
+      case 3:
+        speed_change = ints[1];
+        break;
+      case 4:
+        saveData();
         break;
     }
   }
 
+  // режимы свечения
   switch(mode)
   {
-    case 1:
+    case 'a':
       smoothColorChange();
       break;
-    case 3:
+    case 'b':
       changeColor();
       break;
   }
