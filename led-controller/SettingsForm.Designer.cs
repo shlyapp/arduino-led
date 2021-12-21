@@ -32,7 +32,6 @@ namespace LedController.Settings
             this.portBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.saveBtn = new System.Windows.Forms.Button();
-            this.saveColorBtn = new System.Windows.Forms.Button();
             this.autoSaveColorBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
@@ -68,17 +67,6 @@ namespace LedController.Settings
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
-            // saveColorBtn
-            // 
-            this.saveColorBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.saveColorBtn.Location = new System.Drawing.Point(45, 114);
-            this.saveColorBtn.Name = "saveColorBtn";
-            this.saveColorBtn.Size = new System.Drawing.Size(186, 40);
-            this.saveColorBtn.TabIndex = 3;
-            this.saveColorBtn.Text = "Сохранить цвет";
-            this.saveColorBtn.UseVisualStyleBackColor = true;
-            this.saveColorBtn.Click += new System.EventHandler(this.saveColorBtn_Click);
-            // 
             // autoSaveColorBox
             // 
             this.autoSaveColorBox.AutoSize = true;
@@ -96,7 +84,6 @@ namespace LedController.Settings
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(434, 311);
             this.Controls.Add(this.autoSaveColorBox);
-            this.Controls.Add(this.saveColorBtn);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.portBox);
@@ -113,7 +100,6 @@ namespace LedController.Settings
         private System.Windows.Forms.ComboBox portBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button saveBtn;
-        private System.Windows.Forms.Button saveColorBtn;
         private System.Windows.Forms.CheckBox autoSaveColorBox;
     }
 }

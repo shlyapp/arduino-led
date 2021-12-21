@@ -36,7 +36,10 @@ namespace LedController
 
         private void ConnectBtn_Click(object sender, EventArgs e)
         {
-            if (led.ConnectToArduino())
+
+            led.ConnectToArduino();
+
+            if (led.IsConnected)
             {
                 connectBtn.Enabled = false;
                 foreach (VScrollBar bar in this.Controls.OfType<VScrollBar>())

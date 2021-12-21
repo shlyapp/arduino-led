@@ -7,30 +7,21 @@ namespace LedController
     public class LedStrip
     {
         private SerialPort _serialPort;
-        private int[] _rgb;
+        private bool _isConnected;
 
-        public int[] Color
-        { 
+        public bool IsConnected
+        {
             get
             {
-                return _rgb;
+                return !(_serialPort is null);
             }
             set
             {
-                _serialPort.Write($"r{255 - _rgb[0]}");
-                _serialPort.Write($"g{255 - _rgb[1]}");
-                _serialPort.Write($"b{255 - _rgb[2]}");
+                _isConnected = value;
             }
         }
 
-        public LedStrip()
-        {
-            _rgb = new int[3];
-        }
-
-        public bool IsConnected { get; set; }
-
-        public bool ConnectToArduino()
+        public void ConnectToArduino()
         { 
             try
             {
@@ -39,28 +30,23 @@ namespace LedController
                 MessageBox.Show($"Успешно подключено к {_serialPort.PortName}!");
 
                 IsConnected = true;
-
-                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
 
                 IsConnected = false;
-
-                return false;
             }
         }
 
         public void ChangeColor((int red, int green, int blue) color)
         {
             _serialPort.WriteLine($"{0},{color.red},{color.green},{color.blue}");
-            Console.WriteLine($"{0},{255 - color.red},{255 - color.green},{255 - color.blue}");
         }
 
         public void SaveColorInArduino()
         {
-            _serialPort.Write("s1");
+            _serialPort?.Write("s1");
         }
 
     }

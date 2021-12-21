@@ -30,11 +30,6 @@ namespace LedController.Settings
             this.Close();  
         }
 
-        private void saveColorBtn_Click(object sender, EventArgs e)
-        {
-            MainForm.led.SaveColorInArduino();
-        }
-
         private void SettingsForm_Load(object sender, EventArgs e)
         {
             autoSaveColorBox.Checked = AppSettings.GetInstance().AutoSave;
