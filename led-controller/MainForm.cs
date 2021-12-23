@@ -24,8 +24,15 @@ namespace LedController
                 bar.Maximum = 255;
                 bar.LargeChange = 1;
                 bar.Value = 255;
-                bar.Enabled = false;
             }
+
+            foreach (Control control in this.Controls)
+            {
+                control.Enabled = false;
+            }
+
+            connectBtn.Enabled = true;
+            settingsBtn.Enabled = true;
         }
 
         private void SettingsBtn_Click(object sender, EventArgs e)
@@ -36,22 +43,20 @@ namespace LedController
 
         private void ConnectBtn_Click(object sender, EventArgs e)
         {
-
             led.ConnectToArduino();
 
             if (led.IsConnected)
             {
                 connectBtn.Enabled = false;
-                foreach (VScrollBar bar in this.Controls.OfType<VScrollBar>())
+                foreach (Control control in this.Controls)
                 {
-                    bar.Enabled = true;
+                    control.Enabled = true;
                 }
             }
         }
 
         private void ChangeColor(object sender, ScrollEventArgs e)
         {
-            //Console.WriteLine($"R={redBar.Value}, G={greenBar.Value}, B={blueBar.Value}");
             led.ChangeColor((redBar.Value, greenBar.Value, blueBar.Value));
         }
 
@@ -74,8 +79,17 @@ namespace LedController
             if (colorDialog.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            Console.WriteLine($"{colorDialog.Color.R}, {colorDialog.Color.G}, {colorDialog.Color.B}");
             led.ChangeColor((colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B));
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            led.SaveColorInArduino();
+        }
+
+        private void effectBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

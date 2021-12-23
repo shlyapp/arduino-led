@@ -21,7 +21,7 @@ namespace LedController
 
         public bool IsConnected
         {
-            get => !(_serialPort is null);
+            get => _isConnected;
             private set => _isConnected = value;
         }
 

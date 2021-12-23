@@ -25,7 +25,10 @@ namespace LedController.Settings
             return instance;
         }
 
-        public void SaveToJson() => File.WriteAllText("settings.json", JsonConvert.SerializeObject(this));
+        public void SaveToJson()
+        {
+            File.WriteAllText("settings.json", JsonConvert.SerializeObject(this));
+        }
 
         public void LoadFromJson()
         {

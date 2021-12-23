@@ -21,10 +21,10 @@ namespace LedController.Settings
             if (portBox.Text.Length != 0)
             {
                 AppSettings.GetInstance().ConnectPort = portBox.Text;
+                Console.WriteLine(AppSettings.GetInstance().ConnectPort);
             }
 
             AppSettings.GetInstance().AutoSave = autoSaveColorBox.Checked;
-            Console.WriteLine(AppSettings.GetInstance().AutoSave);
 
             AppSettings.GetInstance().SaveToJson();
             this.Close();  

@@ -30,7 +30,7 @@ namespace LedController
         private void InitializeComponent()
         {
             this.connectBtn = new System.Windows.Forms.Button();
-            this.consoleBtn = new System.Windows.Forms.Button();
+            this.effectBtn = new System.Windows.Forms.Button();
             this.settingsBtn = new System.Windows.Forms.Button();
             this.redBar = new System.Windows.Forms.VScrollBar();
             this.greenBar = new System.Windows.Forms.VScrollBar();
@@ -38,38 +38,39 @@ namespace LedController
             this.changeColorBtn = new System.Windows.Forms.Button();
             this.randomBtn = new System.Windows.Forms.Button();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
-            this.button1 = new System.Windows.Forms.Button();
+            this.saveBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // connectBtn
             // 
             this.connectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.connectBtn.Location = new System.Drawing.Point(618, 12);
+            this.connectBtn.Location = new System.Drawing.Point(618, 47);
             this.connectBtn.Name = "connectBtn";
-            this.connectBtn.Size = new System.Drawing.Size(170, 60);
+            this.connectBtn.Size = new System.Drawing.Size(155, 70);
             this.connectBtn.TabIndex = 1;
             this.connectBtn.TabStop = false;
             this.connectBtn.Text = "Подключить";
             this.connectBtn.UseVisualStyleBackColor = true;
             this.connectBtn.Click += new System.EventHandler(this.ConnectBtn_Click);
             // 
-            // consoleBtn
+            // effectBtn
             // 
-            this.consoleBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.consoleBtn.Location = new System.Drawing.Point(618, 100);
-            this.consoleBtn.Name = "consoleBtn";
-            this.consoleBtn.Size = new System.Drawing.Size(170, 60);
-            this.consoleBtn.TabIndex = 3;
-            this.consoleBtn.TabStop = false;
-            this.consoleBtn.Text = "Консоль";
-            this.consoleBtn.UseVisualStyleBackColor = true;
+            this.effectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.effectBtn.Location = new System.Drawing.Point(618, 136);
+            this.effectBtn.Name = "effectBtn";
+            this.effectBtn.Size = new System.Drawing.Size(155, 70);
+            this.effectBtn.TabIndex = 3;
+            this.effectBtn.TabStop = false;
+            this.effectBtn.Text = "Эффекты";
+            this.effectBtn.UseVisualStyleBackColor = true;
+            this.effectBtn.Click += new System.EventHandler(this.effectBtn_Click);
             // 
             // settingsBtn
             // 
             this.settingsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.settingsBtn.Location = new System.Drawing.Point(618, 194);
+            this.settingsBtn.Location = new System.Drawing.Point(618, 226);
             this.settingsBtn.Name = "settingsBtn";
-            this.settingsBtn.Size = new System.Drawing.Size(170, 60);
+            this.settingsBtn.Size = new System.Drawing.Size(155, 70);
             this.settingsBtn.TabIndex = 4;
             this.settingsBtn.TabStop = false;
             this.settingsBtn.Text = "Настройки";
@@ -107,6 +108,7 @@ namespace LedController
             this.changeColorBtn.Name = "changeColorBtn";
             this.changeColorBtn.Size = new System.Drawing.Size(155, 70);
             this.changeColorBtn.TabIndex = 8;
+            this.changeColorBtn.TabStop = false;
             this.changeColorBtn.Text = "Выбрать цвет";
             this.changeColorBtn.UseVisualStyleBackColor = true;
             this.changeColorBtn.Click += new System.EventHandler(this.changeColorBtn_Click);
@@ -118,18 +120,21 @@ namespace LedController
             this.randomBtn.Name = "randomBtn";
             this.randomBtn.Size = new System.Drawing.Size(155, 70);
             this.randomBtn.TabIndex = 9;
+            this.randomBtn.TabStop = false;
             this.randomBtn.Text = "Случайный цвет";
             this.randomBtn.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // saveBtn
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(13, 136);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 70);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.saveBtn.Location = new System.Drawing.Point(13, 136);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(155, 70);
+            this.saveBtn.TabIndex = 10;
+            this.saveBtn.TabStop = false;
+            this.saveBtn.Text = "Сохранить цвет";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // MainForm
             // 
@@ -137,14 +142,14 @@ namespace LedController
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(800, 416);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.randomBtn);
             this.Controls.Add(this.changeColorBtn);
             this.Controls.Add(this.blueBar);
             this.Controls.Add(this.greenBar);
             this.Controls.Add(this.redBar);
             this.Controls.Add(this.settingsBtn);
-            this.Controls.Add(this.consoleBtn);
+            this.Controls.Add(this.effectBtn);
             this.Controls.Add(this.connectBtn);
             this.Name = "MainForm";
             this.Text = "Form1";
@@ -157,7 +162,7 @@ namespace LedController
         #endregion
 
         public System.Windows.Forms.Button connectBtn;
-        private System.Windows.Forms.Button consoleBtn;
+        private System.Windows.Forms.Button effectBtn;
         private System.Windows.Forms.Button settingsBtn;
         private System.Windows.Forms.VScrollBar redBar;
         private System.Windows.Forms.VScrollBar greenBar;
@@ -165,7 +170,7 @@ namespace LedController
         private System.Windows.Forms.Button changeColorBtn;
         private System.Windows.Forms.Button randomBtn;
         private System.Windows.Forms.ColorDialog colorDialog;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button saveBtn;
     }
 }
 
