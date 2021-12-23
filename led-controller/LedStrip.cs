@@ -9,16 +9,20 @@ namespace LedController
         private SerialPort _serialPort;
         private bool _isConnected;
 
+        private enum ProtocolCommands
+        {
+            SmoothChangeColor,
+            ChangeColor,
+            OffLed,
+            SetSpeed,
+            SaveData,
+            SetEffect
+        }
+
         public bool IsConnected
         {
-            get
-            {
-                return !(_serialPort is null);
-            }
-            set
-            {
-                _isConnected = value;
-            }
+            get => !(_serialPort is null);
+            private set => _isConnected = value;
         }
 
         public void ConnectToArduino()
@@ -41,12 +45,12 @@ namespace LedController
 
         public void ChangeColor((int red, int green, int blue) color)
         {
-            _serialPort.WriteLine($"{0},{color.red},{color.green},{color.blue}");
+            _serialPort?.WriteLine($"{ProtocolCommands.ChangeColor},{color.red},{color.green},{color.blue}");
         }
 
         public void SaveColorInArduino()
         {
-            _serialPort?.Write("4");
+            _serialPort?.Write($"{ProtocolCommands.SaveData}");
         }
 
     }

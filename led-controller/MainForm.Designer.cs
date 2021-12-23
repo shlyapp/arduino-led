@@ -38,6 +38,7 @@ namespace LedController
             this.changeColorBtn = new System.Windows.Forms.Button();
             this.randomBtn = new System.Windows.Forms.Button();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // connectBtn
@@ -77,7 +78,7 @@ namespace LedController
             // 
             // redBar
             // 
-            this.redBar.Location = new System.Drawing.Point(180, 47);
+            this.redBar.Location = new System.Drawing.Point(225, 47);
             this.redBar.Name = "redBar";
             this.redBar.Size = new System.Drawing.Size(50, 350);
             this.redBar.TabIndex = 5;
@@ -85,7 +86,7 @@ namespace LedController
             // 
             // greenBar
             // 
-            this.greenBar.Location = new System.Drawing.Point(246, 47);
+            this.greenBar.Location = new System.Drawing.Point(292, 47);
             this.greenBar.Name = "greenBar";
             this.greenBar.Size = new System.Drawing.Size(50, 350);
             this.greenBar.TabIndex = 6;
@@ -93,7 +94,7 @@ namespace LedController
             // 
             // blueBar
             // 
-            this.blueBar.Location = new System.Drawing.Point(313, 47);
+            this.blueBar.Location = new System.Drawing.Point(358, 47);
             this.blueBar.Name = "blueBar";
             this.blueBar.Size = new System.Drawing.Size(50, 350);
             this.blueBar.TabIndex = 7;
@@ -113,12 +114,22 @@ namespace LedController
             // randomBtn
             // 
             this.randomBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.randomBtn.Location = new System.Drawing.Point(12, 137);
+            this.randomBtn.Location = new System.Drawing.Point(13, 226);
             this.randomBtn.Name = "randomBtn";
             this.randomBtn.Size = new System.Drawing.Size(155, 70);
             this.randomBtn.TabIndex = 9;
             this.randomBtn.Text = "Случайный цвет";
             this.randomBtn.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(13, 136);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(155, 70);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -126,6 +137,7 @@ namespace LedController
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(800, 416);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.randomBtn);
             this.Controls.Add(this.changeColorBtn);
             this.Controls.Add(this.blueBar);
@@ -153,6 +165,7 @@ namespace LedController
         private System.Windows.Forms.Button changeColorBtn;
         private System.Windows.Forms.Button randomBtn;
         private System.Windows.Forms.ColorDialog colorDialog;
+        private System.Windows.Forms.Button button1;
     }
 }
 

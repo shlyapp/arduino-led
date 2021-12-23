@@ -14,17 +14,30 @@ byte last_rgb[3] = {0, 0, 0};
 unsigned long int current_millis;
 
 char mode = 'a';
+// скорость изменения цветов палитры
 int speed_change = 20;
 
-const byte array_size = 4;
+const byte array_size = 3;
 byte colors[array_size][3] = 
 {
   {255, 0, 0},
   {0, 255, 0},
   {0, 0, 255},
-  {255, 255, 255}
+};
+int speed_change_colors = 20;
+int speed_change_rainbow = 20;
+byte colors_rainbow[7][3] = 
+{
+  {255, 0, 0},
+  {255, 127, 0},
+  {255, 255, 0},
+  {0, 255, 0},
+  {255, 0, 255},
+  {75, 0, 130},
+  {143, 0, 255}
 };
 
+byte this_color_rainbow = -1;
 byte this_color = -1;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -53,9 +66,9 @@ void setup()
 ///////////////////////////////////////////////////////////////////////////////
 
 // плавная смена цвета
-void smoothColorChange()
+void smoothColorChange(int speed_smooth)
 {
-  if (millis() - current_millis > speed_change)
+  if (millis() - current_millis > speed_smooth)
   {
     current_millis = millis();
     for (int i = 0; i < 3; i++)
@@ -110,7 +123,7 @@ void effectSmoothChangeColor()
     if (this_color < array_size)
     {
       for (int i = 0; i < 3; i++) rgb[i] = colors[this_color][i];
-      smoothColorChange();
+      smoothColorChange(speed_change_colors);
     }
     else
     {
@@ -120,7 +133,31 @@ void effectSmoothChangeColor()
   }
   else
   {
-    smoothColorChange();
+    smoothColorChange(speed_change_colors);
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+void effectRainbow()
+{
+  if (equalsRGB())
+  {
+    this_color_rainbow++;
+    if (this_color_rainbow < 7)
+    {
+      for (int i = 0; i < 3; i++) rgb[i] = colors_rainbow[this_color][i];
+      smoothColorChange(speed_change_rainbow);
+    }
+    else
+    {
+      this_color_rainbow = -1;
+      effectSmoothChangeColor();
+    }
+  }
+  else
+  {
+    smoothColorChange(speed_change_rainbow);
   }
 }
 
@@ -172,6 +209,9 @@ void loop()
       case 5:
         mode = 'c';
         break;
+      case 6:
+        mode = 'd';
+        break; 
     }
   }
 
@@ -179,13 +219,16 @@ void loop()
   switch(mode)
   {
     case 'a':
-      smoothColorChange();
+      smoothColorChange(speed_change);
       break;
     case 'b':
       changeColor();
       break;
     case 'c':
       effectSmoothChangeColor();
+      break;
+    case 'd':
+      effectRainbow();
       break;
   }
   
