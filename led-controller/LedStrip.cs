@@ -46,7 +46,7 @@ namespace LedController
 
         public void SaveColorInArduino()
         {
-            _serialPort?.Write("s1");
+            _serialPort?.Write("4");
         }
 
     }

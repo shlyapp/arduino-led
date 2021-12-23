@@ -16,6 +16,17 @@ unsigned long int current_millis;
 char mode = 'a';
 int speed_change = 20;
 
+const byte array_size = 4;
+byte colors[array_size][3] = 
+{
+  {255, 0, 0},
+  {0, 255, 0},
+  {0, 0, 255},
+  {255, 255, 255}
+};
+
+byte this_color = -1;
+
 ///////////////////////////////////////////////////////////////////////////////
 
 void setup()
@@ -37,7 +48,6 @@ void setup()
   rgb[0] = EEPROM[0];
   rgb[1] = EEPROM[1];
   rgb[2] = EEPROM[2];
-
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -71,6 +81,47 @@ void changeColor()
   analogWrite(R_PIN, rgb[0]);
   analogWrite(G_PIN, rgb[1]);
   analogWrite(B_PIN, rgb[2]);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+bool equalsRGB()
+{
+  bool flag = true;
+
+  for (int i = 0; i < 3; i++)
+  {
+    if(rgb[i] != last_rgb[i])
+    {
+      flag = false;
+    }
+  }
+
+  return flag;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+void effectSmoothChangeColor()
+{
+  if (equalsRGB())
+  {
+    this_color++;
+    if (this_color < array_size)
+    {
+      for (int i = 0; i < 3; i++) rgb[i] = colors[this_color][i];
+      smoothColorChange();
+    }
+    else
+    {
+      this_color = -1;
+      effectSmoothChangeColor();
+    }
+  }
+  else
+  {
+    smoothColorChange();
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -118,6 +169,9 @@ void loop()
       case 4:
         saveData();
         break;
+      case 5:
+        mode = 'c';
+        break;
     }
   }
 
@@ -129,6 +183,9 @@ void loop()
       break;
     case 'b':
       changeColor();
+      break;
+    case 'c':
+      effectSmoothChangeColor();
       break;
   }
   
