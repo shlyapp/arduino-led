@@ -89,7 +89,8 @@ namespace LedController
 
         private void effectBtn_Click(object sender, EventArgs e)
         {
-
+            EffectsForm settings = new EffectsForm();
+            settings.ShowDialog();
         }
     }
 }
