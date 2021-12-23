@@ -19,6 +19,12 @@ namespace LedController
             SetEffect
         }
 
+        public enum Effects
+        {
+            Transfusion = 5,
+            Rainbow
+        }
+
         public bool IsConnected
         {
             get => _isConnected;
@@ -51,6 +57,11 @@ namespace LedController
         public void SaveColorInArduino()
         {
             _serialPort?.Write($"{ProtocolCommands.SaveData}");
+        }
+
+        public void setEffect(Effects effect, int speed)
+        {
+            _serialPort?.Write($"{((int)effect)},{speed}");
         }
 
     }

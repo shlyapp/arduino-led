@@ -208,9 +208,11 @@ void loop()
         break;
       case 5:
         mode = 'c';
+        speed_change_colors = ints[1];
         break;
       case 6:
         mode = 'd';
+        speed_change_rainbow = ints[1];
         break; 
     }
   }
