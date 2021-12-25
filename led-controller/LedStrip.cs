@@ -51,7 +51,7 @@ namespace LedController
 
         public void ChangeColor((int red, int green, int blue) color)
         {
-            _serialPort?.WriteLine($"{ProtocolCommands.ChangeColor},{color.red},{color.green},{color.blue}");
+            _serialPort?.WriteLine($"{ProtocolCommands.SmoothChangeColor},{color.red},{color.green},{color.blue}");
         }
 
         public void SaveColorInArduino()
